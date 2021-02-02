@@ -1,20 +1,21 @@
 
-string_one = input("Voer een pandindroom in of niet:")
+string_one = input("Voer een palindroom in of niet:")
 
 def palindroom_one(string):
-    reverse_string = "".join(reversed(string))
-    if reverse_string == string:
-        return print(string, "Is een palindroom.")
-    return print(reverse_string, "Is geen palindroom")
+    # Is string gelijk aan string omgekeerd.
+    return string == string[::-1]
 
 
-def palindroom_two(string, original):
-    if len(string) <= 1:
-        return print(original, "Is een palindroom.")
+def palindroom_two(string):
+    # Als de lengte van de string kleiner is dan 1
+    if len(string) < 1:
+        return True
+    # Als het eerst karakter en laatse karakter gelijk zijn aan elkaar
     if string[0] == string[-1]:
-        return palindroom_two(string[1:-1], original)
-    return print(original, "Is geen palindroom")
+        # Herhaal functie min het eerste index en de laatse index
+        return palindroom_two(string[1:-1])
+    return False
 
 
-palindroom_one(string_one)
-palindroom_two(string_one, string_one)
+print(palindroom_one(string_one))
+print(palindroom_two(string_one))
